@@ -1,0 +1,6 @@
+{
+  "name": "SIMPATIKA Al-Hasanah",
+  "description": "Sistem Pendataan & Manajemen SK Guru Yayasan Perguruan Islam Al-Hasanah (RA, MI, MTs)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
