@@ -11,11 +11,25 @@ import { SKUploadModal } from './components/SKUploadModal';
 import { PrintReportModal } from './components/PrintReportModal';
 import { AIAssistantModal } from './components/AIAssistantModal';
 import { DeactivateModal } from './components/DeactivateModal';
+import { LoginPage } from './components/LoginPage';
 import { LayoutGrid, Table, Filter, RotateCcw, Download, Database, Upload, UserX, UserCheck } from 'lucide-react';
 
 const STORAGE_KEY = 'yayasan_data_guru_alhasanah_official_v2';
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = (username: string, password: string) => {
+    if (
+      (username === 'Ketua Yayasan' && password === '1111Robinson_') ||
+      (username === 'SIPANDU2026' && password === 'SIPANDU2026')
+    ) {
+      setIsAuthenticated(true);
+      return true;
+    }
+    return false;
+  };
+
   // Load initial data from localStorage or fallback to default dataset
   const [teachers, setTeachers] = useState<Teacher[]>(() => {
     try {
@@ -410,6 +424,10 @@ export default function App() {
       if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
       return 0;
     });
+
+  if (!isAuthenticated) {
+    return <LoginPage onLogin={handleLogin} />;
+  }
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 font-sans flex flex-col">
